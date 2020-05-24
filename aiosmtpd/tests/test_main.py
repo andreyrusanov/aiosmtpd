@@ -163,6 +163,7 @@ class TestLoop(unittest.TestCase):
         main(('-n',))
         # create_server() is called with a partial as the factory, and a
         # socket object.
+        self.assertTrue(False)
         self.assertEqual(self.create_server.call_count, 1)
         positional, keywords = self.create_server.call_args
         self.assertEqual(positional[0].func, SMTP)
