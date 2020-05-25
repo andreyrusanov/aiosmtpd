@@ -12,6 +12,8 @@ jobs:
     strategy:
       matrix: 
         python-version: [3.5, 3.6, 3.7, 3.8]
+    env:
+      PYVERSION: ${{ matrix.python-version }}
 
     steps:
     - uses: actions/checkout@v2
@@ -28,6 +30,6 @@ jobs:
       run: tox -e py36-nocov,py36-cov,qa,docs,py36-diffcov
       env:
         PYTHONASYNCIODEBUG: 1
-#        INTERP: `echo py${{ matrix.python-version }} | sed -e 's/\.//g'`
+        INTERP: py`echo ${PYVERSION//.}`
     - name: run codecov
       run: bash <(curl -s https://codecov.io/bash)
