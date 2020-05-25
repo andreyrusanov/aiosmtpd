@@ -25,7 +25,7 @@ jobs:
         python setup.py egg_info
         pip install -r aiosmtpd.egg-info/requires.txt
     - name: run tox 
-      run: python3 -m tox -e nocov,cov,qa,docs,diffcov
+      run: echo $TOXENV;python3 -m tox -e nocov,cov,qa,docs,diffcov
       env:
         PYTHONASYNCIODEBUG: 1
         TOXENV: nocov,cov,qa,docs,diffcov
