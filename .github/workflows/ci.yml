@@ -30,5 +30,8 @@ jobs:
       run: INTERP=py`echo ${PYVERSION//.}`;tox -e $INTERP-nocov,$INTERP-cov,qa,docs,$INTERP-diffcov
       env:
         PYTHONASYNCIODEBUG: 1
+
     - name: run codecov
-      run: bash <(curl -s https://codecov.io/bash)
+      uses: codecov/codecov-action@v1
+      with:
+        fail_ci_if_error: true
